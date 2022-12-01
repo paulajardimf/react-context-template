@@ -1,11 +1,15 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../contexts/GlobalContext";
 import { goToDetailsPage } from "../../routes/coordinator";
 import { Container } from "./Card.styled";
 
 function Card(props) {
-  const { pokemonUrl, addToPokedex, removeFromPokedex } = props;
+  const { pokemonUrl /*, addToPokedex, removeFromPokedex*/ } = props;
+
+  const context = useContext(GlobalContext);
+  const { addToPokedex, removeFromPokedex } = context;
 
   // hook para saber nosso path atual
   const location = useLocation();
